@@ -4,6 +4,11 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
+
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+    justify-content: center;
+  }
 `
 
 export const Buttons = styled.div`
@@ -13,6 +18,13 @@ export const Buttons = styled.div`
   gap: 20px;
   height: 220px;
   width: 100px;
+
+  @media only screen and (max-width: 768px) {
+    flex-direction: row-reverse;
+    align-items: center;
+    height: 100px;
+    width: 220px;
+  }
 `
 
 export const Button = styled.button`

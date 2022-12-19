@@ -1,12 +1,19 @@
-import { useContext } from 'react'
+import { useContext, useRef } from 'react'
 import { Context } from '../../Context'
 import { Container, Buttons, Button } from './styles'
 
 export const Config = ({ children }) => {
+  const container = useRef(null)
   const { layers, setLayers, time, setTime } = useContext(Context)
 
   const handleIncreaseLayers = () => {
-    if (layers + 1 < 15) setLayers(layers + 1)
+    const heightContainer = container.current.offsetHeight
+    const widthContainer = container.current.offsetWidth
+    if (
+      heightContainer + 100 < window.innerHeight &&
+      widthContainer + 40 < window.innerWidth
+    )
+      setLayers(layers + 1)
   }
 
   const handleDecreaseLayers = () => {
@@ -22,7 +29,7 @@ export const Config = ({ children }) => {
   }
 
   return (
-    <Container>
+    <Container ref={container}>
       <Buttons>
         <Button onClick={handleIncreaseLayers} fontSize='2.5em'>
           🎄
